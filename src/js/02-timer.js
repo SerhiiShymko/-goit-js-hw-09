@@ -16,6 +16,7 @@ const refs = {
 refs.btnStart.disabled = true;
 
 let intervalId = null;
+let selectedDate = null;
 
 flatpickr(refs.calendar, {
   enableTime: true,
