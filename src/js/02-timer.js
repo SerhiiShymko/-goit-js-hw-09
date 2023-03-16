@@ -16,6 +16,8 @@ const refs = {
 refs.btnStart.disabled = true;
 
 let intervalId = null;
+let selectedDate = null;
+let currentDate = null;
 
 flatpickr(refs.calendar, {
   enableTime: true,
@@ -29,7 +31,7 @@ flatpickr(refs.calendar, {
       selectedDate = selectedDates[0].getTime();
       refs.btnStart.disabled = false;
     }
-    console.log(selectedDates[0]);
+    console.log(selectedDate[0]);
   },
 });
 
@@ -39,8 +41,6 @@ const timer = {
       currentDate = Date.now();
       const deltaTime = selectedDate - currentDate;
       updateTimerface(convertMs(deltaTime));
-      // refs.btnStart.disabled = true;
-      // refs.calendar.disabled = true;
 
       if (deltaTime <= 1000) {
         this.stop();
@@ -51,8 +51,6 @@ const timer = {
   },
 
   stop() {
-    // refs.startBtn.disabled = true;
-    // refs.calendar.disabled = false;
     clearInterval(intervalId);
     this.intervalId = null;
   },
