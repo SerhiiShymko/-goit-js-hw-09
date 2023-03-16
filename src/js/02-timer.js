@@ -16,8 +16,6 @@ const refs = {
 refs.btnStart.disabled = true;
 
 let intervalId = null;
-let selectedDate = null;
-let currentDate = null;
 
 flatpickr(refs.calendar, {
   enableTime: true,
@@ -31,14 +29,14 @@ flatpickr(refs.calendar, {
       selectedDate = selectedDates[0].getTime();
       refs.btnStart.disabled = false;
     }
-    console.log(selectedDate[0]);
+    console.log(selectedDates[0]);
   },
 });
 
 const timer = {
   start() {
     intervalId = setInterval(() => {
-      currentDate = Date.now();
+      currentDate = new Date().getTime();
       const deltaTime = selectedDate - currentDate;
       updateTimerface(convertMs(deltaTime));
 
