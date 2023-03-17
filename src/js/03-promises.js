@@ -39,7 +39,11 @@ function onPromiseCreate(e) {
   let amountInput = Number(refs.amountInput.value);
 
   for (let i = 1; i <= amountInput; i += 1) {
-    delayInput += stepInput;
+    if (i === 1) {
+      delayInput;
+    } else {
+      delayInput += stepInput;
+    }
 
     createPromise(i, delayInput)
       .then(({ position, delay }) => {
@@ -54,6 +58,6 @@ function onPromiseCreate(e) {
           options
         );
       });
-    // e.currentTarget.reset();
+    e.currentTarget.reset();
   }
 }
